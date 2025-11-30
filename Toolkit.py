@@ -17,12 +17,9 @@ Install these 4 libraries at Pip section of your app before integrating API keys
 # CoinAlyze VTRM Setup
 #-------------------------------
 
-You can find the detail in the github repo 
-or at traderabba's paragraph blog.
+You can find the detail on my gitub.
 
-Github: https://github.com/traderabbaa/crypto-volume-analysis-toolkit
-
-Paragraph: https://paragraph.com/@traderabba/crypto-volume-analysis-toolkit
+Github: https://github.com/traderabba
 
 --------------------------------------
 
@@ -156,8 +153,8 @@ def learn_more() -> None:
     print("   LEARN MORE")
     print("="*50)
     print("   📚 Documentation & Source Code:")
-    print("   🔗 GitHub: github.com/traderabba/crypto-volume-analysis/toolkit")
-    print("   🔗 Paragraph Guide: https://paragraph.com/@traderabba/crypto-volume-analysis-toolkit")
+    print("   🔗 GitHub: github.com/traderabba/Crypto-Volume-Analysis/Toolkit")
+    print("   🔗 Trader Abba's Blog: https://paragraph.com/@traderabba")
     print()
     print("   🛠️ Features:")
     print("   • Spot Volume Tracker - Find high-volume tokens in the last 24 hours")
