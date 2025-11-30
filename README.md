@@ -14,7 +14,7 @@ Lightweight and simple toolkit that helps you track high-volume crypto tokens in
 - Cleanup system that removes source files after analysis
 - Lightweight and fast
 
-# **Installation Guide**
+# **Installation & Setup**
 
 Before running the toolkit, you need to install these four libraries in your python or Pydroid3 environment:
 
@@ -35,4 +35,24 @@ Set these in your environment:
 
 ## CoinAlyze VRMR Setup
 
+To use the tool efficiently, you need specific futures data from CoinAlyze:
 
+- Go to CoinAlyze.net and sign up.
+
+- Navigate to **Custom Metrics** and tap on **Create Custom Metrics**.
+
+- Enter **VTMR** in the Name and Short Name fields, then paste the ** VTMR code** in the Expression field, then save & close.
+
+`((vol_1d[0] / mc_1d[0]) * 10) / 10 * (vol_1d[0] / mc_1d[0] >= 0.5)`
+
+- Go to **Columns**, deselect all, and select **Market Capitalization**, **Volume 24H**, and **VTMR**, then click **Apply**.
+
+- Bookmark the page and save it as VTMR.
+
+- Go to Chrome menu → Share → Print, and save it as it is without changing the file name in the Download folder.
+
+### Why do rhis?
+
+Because before you run the toolkit, you need fresh futures data from CoinAlyze. So basically, you only need to launch Chrome, type VTMR, open your bookmark, and print the page into the Download folder. 
+
+After you run the toolkit, it will take care of cleaning your download folder and leaving only the most valuable reports there. 
