@@ -23,6 +23,16 @@ Before running the toolkit, you need to install these four libraries in your pyt
 
 ## API keys Setup
 
+Set these in your environment:
+
+- HTML2PDF_API_KEY
+
+- CMC_API_KEY
+
+- LIVECOINWATCH_API_KEY
+
+- COINRANKINGS_API_KEY
+
 ## CoinAlyze VRMR Setup
 
 
