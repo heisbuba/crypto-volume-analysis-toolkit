@@ -53,7 +53,7 @@ To use the tool efficiently, you need specific futures data from CoinAlyze:
 
 - Enter **VTMR** in the Name and Short Name fields, then paste the **VTMR code** in the Expression field 'n save & close.
 
-`((vol_1d[0] / mc_1d[0]) * 10) / 10 * (vol_1d[0] / mc_1d[0] >= 0.5)`
+```((vol_1d[0] / mc_1d[0]) * 10) / 10 * (vol_1d[0] / mc_1d[0] >= 0.5)```
 
 - Go to **Columns**, deselect all, and select **Market Capitalization**, **Volume 24H**, **Open Interest Change % 24H** and **VTMR**, then click **Apply**.
 
