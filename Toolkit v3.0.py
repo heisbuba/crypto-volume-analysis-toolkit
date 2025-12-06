@@ -667,17 +667,33 @@ def crypto_analysis_v4() -> None:
         if oi_change > -0.20: return 1, "Exiting"
         return 0, "Exiting"
 
-    def make_oiss(oi_percent_str: str) -> str:
+      def make_oiss(oi_percent_str: str) -> str:
         if not oi_percent_str: return "-"
         val = oi_percent_str.replace("%", "").strip()
         try:
             oi_change = float(val) / 100
             score, signal = oi_score_and_signal(oi_change)
+            
+  # Color Injection Logic
+            if oi_change > 0:
+                css_class = "oi-strong" 
+            elif oi_change < 0:
+                css_class = "oi-weak"  
+            else:
+                css_class = ""
+
             sign = "+" if oi_change > 0 else ""
-            percent = f"{sign}{oi_change*100:.0f}%"
-            return f"{percent}/{score}/{signal}"
+            
+            # Wrap the percentage in the HTML span with the class
+            if css_class:
+                percent = f'<span class="{css_class}">{sign}{oi_change*100:.0f}%</span>'
+            else:
+                percent = f"{sign}{oi_change*100:.0f}%"
+            # ---------------------------------
+            return f"{percent} {signal}"
         except Exception:
             return "-"
+            
 
     @dataclass
     class TokenData:
