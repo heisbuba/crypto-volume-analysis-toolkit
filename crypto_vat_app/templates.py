@@ -84,6 +84,7 @@ ADMIN_TEMPLATE = f"""<!DOCTYPE html><html>{COMMON_HEAD}<body>
     </div>
 </body></html>"""
 
+# ORIGINAL V4.0 TEMPLATES
 HOME_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -300,12 +301,15 @@ SETUP_TEMPLATE = f"""<!DOCTYPE html><html>{COMMON_HEAD}<body>
                 <label>VTMR URL</label>
                 <input type="text" name="vtmr_url" value="{{{{ vtmr }}}}" placeholder="https://coinalyze.net/?columns=...">
             </div>
-            <button type="submit" class="btn btn-green">SAVE CONFIGURATION</button>
+            <div class="grid-buttons">
+                <button type="submit" name="action" value="save" class="btn-update btn-green">SAVE CONFIGURATION</button>
+                <button type="submit" name="action" value="quit" class="btn-update btn-red">SAVE & QUIT</button>
+            </div>
         </form>
     </div>
 </body></html>"""
 
-SETTINGS_TEMPLATE = SETUP_TEMPLATE.replace("Setup Wizard", "Settings").replace("SAVE CONFIGURATION", "UPDATE SETTINGS")
+SETTINGS_TEMPLATE = SETUP_TEMPLATE.replace("Setup Wizard", "Settings").replace("SAVE CONFIGURATION", "UPDATE SETTINGS").replace("SAVE & QUIT", "QUIT")
 
 HELP_TEMPLATE = f"""<!DOCTYPE html><html>{COMMON_HEAD}<body>
     <div class="container">
@@ -318,6 +322,6 @@ HELP_TEMPLATE = f"""<!DOCTYPE html><html>{COMMON_HEAD}<body>
             <h2>Links</h2>
             <a href="https://github.com/heisbuba/crypto-volume-analysis-toolkit" class="btn btn-blue" target="_blank">GitHub</a>
         </div>
-        <a href="/" style="color:#3b82f6;" class="link" style="float:none;text-align:center;display:block;">← Back to Dashboard</a>
+        <a href="/" style="color:#3b82f6;" class="back-link">← Back to Dashboard</a>
     </div>
 </body></html>"""
