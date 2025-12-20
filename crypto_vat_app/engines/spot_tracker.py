@@ -135,7 +135,6 @@ def run_spot_analysis(user_id: str):
         ratio = avg_vol/avg_mc if avg_mc else 0
         large_cap = any(m > 1_000_000_000 for m in mcs)
 
-        # Exact logic from v4.0
         if (len(tokens) == 1 and large_cap and ratio >= 0.50) or (len(tokens) >= 2 and ratio > 0.75):
             verified.append({
                 "symbol": sym, 
@@ -148,7 +147,6 @@ def run_spot_analysis(user_id: str):
     
     hot_tokens = sorted(verified, key=lambda x: x['flipping_multiple'], reverse=True)
     
-    # HTML Report Generation
     date_prefix = datetime.datetime.now().strftime("%b-%d-%y")
     filename = f"{user_id}_Volumed_Spot_Tokens_{date_prefix}.html"
     save_path = config.UPLOAD_FOLDER / filename
