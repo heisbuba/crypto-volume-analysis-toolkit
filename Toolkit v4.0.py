@@ -76,7 +76,7 @@ STABLECOINS = {
     'UST', 'TUSD', 'USDP', 'USDD', 'FRAX', 'GUSD', 'LUSD', 'FDUSD'
 }
 
-# [FIX]: Added Path.home() / "Downloads" for Windows/Mac support
+# Added Path.home() / "Downloads" for Windows/Mac support
 DEFAULT_SAVE_PATHS = [
     Path.home() / "Downloads",
     Path("/sdcard/Download"),
