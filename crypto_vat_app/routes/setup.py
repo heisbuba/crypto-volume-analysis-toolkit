@@ -1,5 +1,9 @@
+import os
+import signal
+import threading
+import time
 from flask import Blueprint, request, redirect, render_template_string, url_for
-from utils import update_config_file, load_config_from_file
+from utils import update_config_file
 import config
 from templates import SETUP_TEMPLATE, SETTINGS_TEMPLATE
 
@@ -19,6 +23,7 @@ def settings_page():
 
 @setup_bp.route("/save-config", methods=["POST"])
 def save_config():
+    action = request.form.get("action")
     update_config_file({
         "CMC_API_KEY": request.form.get("cmc_key"),
         "LIVECOINWATCH_API_KEY": request.form.get("lcw_key"),
@@ -26,4 +31,37 @@ def save_config():
         "HTML2PDF_API_KEY": request.form.get("html2pdf_key"),
         "COINALYZE_VTMR_URL": request.form.get("vtmr_url")
     })
+    
+    if action == "quit":
+        return redirect(url_for('setup.shutdown_page_visual'))
+    
     return redirect('/')
+
+# [RESTORED]: Factory Reset Logic
+@setup_bp.route("/factory-reset")
+def factory_reset():
+    update_config_file({
+        "CMC_API_KEY": "CONFIG_REQUIRED_CMC",
+        "LIVECOINWATCH_API_KEY": "CONFIG_REQUIRED_LCW",
+        "COINRANKINGS_API_KEY": "CONFIG_REQUIRED_CR",
+        "HTML2PDF_API_KEY": "CONFIG_REQUIRED_HTML2PDF",
+        "COINALYZE_VTMR_URL": "CONFIG_VTMR_URL"
+    })
+    return redirect(url_for('setup.setup_page'))
+
+# [RESTORED]: Shutdown Logic (Note: On Koyeb this restarts the container)
+@setup_bp.route("/shutdown", methods=['GET', 'POST'])
+def shutdown():
+    os.kill(os.getpid(), signal.SIGINT)
+    return "Server shutting down..."
+
+@setup_bp.route("/shutdown-page")
+def shutdown_page_visual():
+    def kill_me():
+        time.sleep(1)
+        os.kill(os.getpid(), signal.SIGINT)
+    threading.Thread(target=kill_me).start()
+    
+    return f"""<!DOCTYPE html><html>
+    <head><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{{background:#0b0e11;color:#eaecef;font-family:sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;flex-direction:column;text-align:center;}}</style></head>
+    <body><h2 style='color:#0ecb81;'>Configuration Saved</h2><p>Application Terminated.<br>You can close this window now.</p></body></html>"""
