@@ -27,7 +27,6 @@ COMMON_HEAD = """
 </head>
 """
 
-# [FIX] Added COMMON_HEAD to Auth Templates to ensure they inherit the styles
 LOGIN_TEMPLATE = f"""<!DOCTYPE html><html>{COMMON_HEAD}<body>
     <div style="display:flex; height:100vh; align-items:center; justify-content:center;">
         <div class="card" style="width:100%; max-width:400px;">
@@ -85,7 +84,6 @@ ADMIN_TEMPLATE = f"""<!DOCTYPE html><html>{COMMON_HEAD}<body>
     </div>
 </body></html>"""
 
-# Original Templates from your upload (retained)
 HOME_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
