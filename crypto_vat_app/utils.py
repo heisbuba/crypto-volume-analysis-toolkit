@@ -23,7 +23,7 @@ class LogCatcher:
                 if len(config.LIVE_LOGS) > 500:
                     config.LIVE_LOGS.pop(0)
             
-            # Progress Logic
+            # Progress Logic from v4.0
             text = msg.lower()
             if "scanning coingecko" in text:
                 self._update_progress(10, "Fetching CoinGecko Data...", "active")
