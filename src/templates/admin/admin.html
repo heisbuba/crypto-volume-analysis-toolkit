@@ -1,15 +1,17 @@
 {% extends "base.html" %}
-
+{% block title %}Admin Dashboard - CryptoVAT{% endblock %} 
 {% block extra_css %}
 <style>
    /* --- ADMIN HEADER --- */
+  
 .admin-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-bottom: 25px;
+    margin-top: 40px;    
 }
-
+  
 .admin-title {
     color: var(--accent-green);
     margin: 0;
@@ -193,11 +195,5 @@ td {
         </div>
     </div>
 
-    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center;">
-        <a href="{{ url_for('main.home') }}" class="btn btn-links" style="width: auto; padding: 10px 25px; display: inline-block; margin-bottom: 15px;">
-            ← BACK TO DASHBOARD
-        </a>
-        <p style="color: var(--text-dim); font-size: 0.75rem; letter-spacing: 0.5px;">SERVER TIMESTAMP: {{ server_time }}</p>
-    </div>
 </div>
 {% endblock %}
